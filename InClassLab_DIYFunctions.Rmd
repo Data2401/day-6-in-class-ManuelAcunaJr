@@ -1,6 +1,6 @@
 ---
 title: "In Class Lab - DIY Functions"
-author: "Dr. Shoemaker"
+author: "Manuel Acuna Jr"
 date: "DATA 2401"
 output: html_document
 ---
@@ -16,41 +16,74 @@ The questions from your notes today are below, please copy your answers them her
 1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
 
 ```{R}
-
-
+F_to_C <- function(F) {
+  result <- (F - 32) * (5/9)
+  return(result)
+}
+F_to_C(98.6)
 ```
 
 2. Expand that function so that it takes a temperature in Fahrenheit and a distance in feet and returns **both** the temperature in Celcius and the distance in meters (you'll likely need to remember the `c()` function!)
 
 
 ```{r}
-
-
+F_Ft <- function(F, ft) {
+  celsius <- (F - 32) * (5/9)
+  feet <- ft / 3.281
+  return(c(celsius, feet))
+}
+F_Ft(32, 3)
 ```
 
 
 3. Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0. 
 
 ```{R}
-
-
+pos_neg <- function(num) {
+  if (num > 0) {
+    return('positive')
+  } else if (num < 0) {
+    return('negative')
+  } else {
+    return(0)
+  }
+}
+pos_neg(100)
+pos_neg(-55)
+pos_neg(0)
 ```
 
 4. Write a function that returns the absolute value of the number passed as an argument.
    + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
    
 ```{r}
-
-
+pos <- function(num) {
+  if (num < 0) {
+    return(num * -1)
+  } else {
+    return(num)
+  }
+}
+pos(-10)
+pos(33)
 ```
 
 5. Hard mode: add an error check to that function that prints out the string "Please pass a numerical value to this function" if the user passes the function a string. 
    + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
    
 ```{r}
-
-
-
+poss <- function(num) {
+  if (num < 0) {
+    return(-num)
+  } else if (is.character(num)) {
+    return('Please pass a numerical value to this function')
+  } else {
+    return(num)
+  }
+}
+poss(-33)
+poss(10)
+poss('zero')
 ```
    
    
